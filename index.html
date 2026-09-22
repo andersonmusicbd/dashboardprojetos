@@ -115,23 +115,23 @@
                         Área de Membros & Workspace Privado
                     </h1>
                     <p class="text-slate-400 text-sm leading-relaxed mb-8">
-                        Acompanhamento profissional de entregas e Prestações de Contas (PCs) com dados isolados por membro e sincronização em nuvem.
+                        Acompanhamento profissional em formato de Galeria com documentação de processos e controle de Prestações de Contas (PCs).
                     </p>
                 </div>
 
                 <div class="space-y-4">
                     <div class="flex items-center space-x-3 text-slate-300 text-sm">
                         <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
+                            <i data-lucide="layout-grid" class="w-4 h-4"></i>
                         </div>
-                        <span>Painel privado individual para cada membro</span>
+                        <span>Visualização em Galeria de Cards</span>
                     </div>
 
                     <div class="flex items-center space-x-3 text-slate-300 text-sm">
                         <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-                            <i data-lucide="cloud" class="w-4 h-4"></i>
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
                         </div>
-                        <span>Controle de Proforma e Prazos por PC</span>
+                        <span>Documentação de Processos e Anotações</span>
                     </div>
 
                     <div class="flex items-center space-x-3 text-slate-300 text-sm">
@@ -303,56 +303,40 @@
             </div>
 
             <!-- Dashboard Navigation Views Tabs -->
-            <div class="glass-panel p-1.5 rounded-2xl flex flex-wrap gap-1 border border-slate-800 text-sm overflow-x-auto">
-                <button onclick="switchDashboardTab('all')" id="dash-tab-all" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all bg-indigo-600 text-white">
-                    <i data-lucide="list" class="w-4 h-4"></i>
-                    <span>Projetos e PCs</span>
-                </button>
-                <button onclick="switchDashboardTab('pending')" id="dash-tab-pending" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
-                    <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                    <span>Com Pendências</span>
-                </button>
-                <button onclick="switchDashboardTab('balance')" id="dash-tab-balance" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
-                    <i data-lucide="wallet" class="w-4 h-4"></i>
-                    <span>Por Saldo</span>
-                </button>
-                <button onclick="switchDashboardTab('charts')" id="dash-tab-charts" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
-                    <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
-                    <span>Gráfico Gerencial</span>
-                </button>
-            </div>
-
-            <!-- TABLE VIEW CONTAINER -->
-            <div id="view-table-container" class="glass-panel rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
-                <div class="p-4 border-b border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="relative w-full sm:w-72">
-                        <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-slate-500"></i>
-                        <input type="text" id="table-search" oninput="renderProjectsTable()" placeholder="Buscar projeto, PC ou status..." class="w-full glass-input pl-9 pr-4 py-1.5 rounded-xl text-xs">
-                    </div>
-                    <span id="active-tab-title" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Acompanhamento de Prestações de Contas</span>
+            <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4">
+                <div class="glass-panel p-1.5 rounded-2xl flex flex-wrap gap-1 border border-slate-800 text-sm overflow-x-auto">
+                    <button onclick="switchDashboardTab('all')" id="dash-tab-all" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all bg-indigo-600 text-white">
+                        <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                        <span>Galeria de Projetos</span>
+                    </button>
+                    <button onclick="switchDashboardTab('pending')" id="dash-tab-pending" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                        <span>Com Pendências</span>
+                    </button>
+                    <button onclick="switchDashboardTab('balance')" id="dash-tab-balance" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i data-lucide="wallet" class="w-4 h-4"></i>
+                        <span>Por Saldo</span>
+                    </button>
+                    <button onclick="switchDashboardTab('charts')" id="dash-tab-charts" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                        <span>Gráfico Gerencial</span>
+                    </button>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-slate-800 bg-slate-900/50 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                                <th class="py-3 px-4 w-12">Proforma</th>
-                                <th class="py-3 px-4 w-48">Status da PC / Projeto</th>
-                                <th class="py-3 px-4">Nome do Projeto / Detalhamento da PC</th>
-                                <th class="py-3 px-4 w-32">Progresso</th>
-                                <th class="py-3 px-4 w-36">Prazo de Entrega</th>
-                                <th class="py-3 px-4 w-32">Saldo (R$)</th>
-                                <th class="py-3 px-4 text-right w-24">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projects-table-body" class="divide-y divide-slate-800/60 text-sm">
-                            <!-- Rows injected dynamically -->
-                        </tbody>
-                    </table>
+                <div class="relative w-full sm:w-72">
+                    <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-slate-500"></i>
+                    <input type="text" id="gallery-search" oninput="renderGallery()" placeholder="Buscar projeto, PC ou status..." class="w-full glass-input pl-9 pr-4 py-2 rounded-xl text-xs">
+                </div>
+            </div>
+
+            <!-- GALLERY VIEW CONTAINER -->
+            <div id="view-gallery-container">
+                <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Gallery cards injected dynamically -->
                 </div>
 
                 <!-- Empty State -->
-                <div id="empty-state" class="hidden p-12 text-center">
+                <div id="empty-state" class="hidden p-12 text-center glass-panel rounded-2xl border border-slate-800">
                     <div class="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center mx-auto text-slate-500 mb-3">
                         <i data-lucide="inbox" class="w-6 h-6"></i>
                     </div>
@@ -435,67 +419,89 @@
         </div>
     </div>
 
-    <!-- CREATE/EDIT PC MODAL -->
+    <!-- CREATE/EDIT PC MODAL WITH DOCUMENTATION TAB -->
     <div id="modal-pc" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-panel w-full max-w-lg rounded-2xl border border-slate-800 overflow-hidden shadow-2xl animate-fade-in">
+        <div class="glass-panel w-full max-w-xl rounded-2xl border border-slate-800 overflow-hidden shadow-2xl animate-fade-in flex flex-col max-h-[90vh]">
             <div class="p-5 border-b border-slate-800 flex justify-between items-center bg-slate-900/60">
                 <h3 id="modal-pc-title" class="text-base font-bold text-white flex items-center gap-2">
                     <i data-lucide="file-plus" class="w-5 h-5 text-indigo-400"></i>
-                    <span>Adicionar Prestação de Contas (PC)</span>
+                    <span>Prestação de Contas (PC)</span>
                 </h3>
                 <button onclick="closePCModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
 
-            <form id="pc-form" onsubmit="handleSavePC(event)" class="p-6 space-y-4">
+            <!-- Modal Sub-Tabs -->
+            <div class="flex bg-slate-900/90 border-b border-slate-800 px-6 pt-3 space-x-4">
+                <button type="button" id="pc-tab-btn-details" onclick="switchPCTab('details')" class="pb-3 text-xs font-semibold border-b-2 border-indigo-500 text-indigo-400 flex items-center gap-1.5">
+                    <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Dados Principais
+                </button>
+                <button type="button" id="pc-tab-btn-doc" onclick="switchPCTab('doc')" class="pb-3 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Documentação & Processos
+                </button>
+            </div>
+
+            <form id="pc-form" onsubmit="handleSavePC(event)" class="p-6 space-y-4 overflow-y-auto flex-1">
                 <input type="hidden" id="pc-project-id">
                 <input type="hidden" id="pc-id">
 
-                <div>
-                    <label class="text-xs font-semibold text-slate-400 block mb-1">Descrição / Identificação da PC</label>
-                    <input type="text" id="pc-name" required placeholder="Ex: pc#1 06/06/2024 à 31/10/2024" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
+                <!-- Tab: Details -->
+                <div id="pc-tab-details" class="space-y-4">
                     <div>
-                        <label class="text-xs font-semibold text-slate-400 block mb-1">Status da PC</label>
-                        <select id="pc-status" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
-                            <option value="Não iniciada">Não iniciada</option>
-                            <option value="Em elaboração">Em elaboração</option>
-                            <option value="Emitida">Emitida</option>
-                            <option value="Pendenciada">Pendenciada</option>
-                            <option value="Aprovada com pendência">Aprovada com pendência</option>
-                            <option value="Aprovada">Aprovada</option>
-                        </select>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Descrição / Identificação da PC</label>
+                        <input type="text" id="pc-name" required placeholder="Ex: pc#1 06/06/2024 à 31/10/2024" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-semibold text-slate-400 block mb-1">Status da PC</label>
+                            <select id="pc-status" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
+                                <option value="Não iniciada">Não iniciada</option>
+                                <option value="Em elaboração">Em elaboração</option>
+                                <option value="Emitida">Emitida</option>
+                                <option value="Pendenciada">Pendenciada</option>
+                                <option value="Aprovada com pendência">Aprovada com pendência</option>
+                                <option value="Aprovada">Aprovada</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-semibold text-slate-400 block mb-1">Status Proforma</label>
+                            <select id="pc-proforma" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
+                                <option value="Não iniciada">Não iniciada</option>
+                                <option value="Emitida">Emitida</option>
+                                <option value="Paga">Paga</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div>
-                        <label class="text-xs font-semibold text-slate-400 block mb-1">Status Proforma</label>
-                        <select id="pc-proforma" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
-                            <option value="Não iniciada">Não iniciada</option>
-                            <option value="Emitida">Emitida</option>
-                            <option value="Paga">Paga</option>
-                        </select>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Prazo / Data de Entrega</label>
+                        <input type="date" id="pc-delivery-date" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Resumo Rápido / Notas de Alerta</label>
+                        <input type="text" id="pc-notes" placeholder="Ex: Solicitar alteração do item de pesquisador..." class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
                     </div>
                 </div>
 
-                <div>
-                    <label class="text-xs font-semibold text-slate-400 block mb-1">Prazo / Data de Entrega</label>
-                    <input type="date" id="pc-delivery-date" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
+                <!-- Tab: Documentation -->
+                <div id="pc-tab-doc" class="hidden space-y-4">
+                    <div>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Documentação Interna do Processo / Histórico da PC</label>
+                        <p class="text-[11px] text-slate-500 mb-2">Utilize este espaço para registrar decisões, lista de documentos anexados, pendências enviadas por e-mail ou fluxos do processo.</p>
+                        <textarea id="pc-documentation" rows="8" placeholder="Ex:&#10;- 10/06: Documentação enviada para auditoria.&#10;- 15/06: Rejeitado recibo #4 por falta de assinatura.&#10;- 18/06: Reenviado comprovante atualizado." class="w-full glass-input px-3.5 py-2.5 rounded-xl text-xs font-mono leading-relaxed"></textarea>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="text-xs font-semibold text-slate-400 block mb-1">Observações / Notas</label>
-                    <textarea id="pc-notes" rows="2" placeholder="Ex: Solicitar alteração do item de pesquisador..." class="w-full glass-input px-3.5 py-2 rounded-xl text-sm"></textarea>
-                </div>
-
-                <div class="pt-4 flex space-x-3">
+                <div class="pt-4 flex space-x-3 border-t border-slate-800">
                     <button type="button" onclick="closePCModal()" class="flex-1 py-2.5 border border-slate-700 text-slate-300 font-semibold rounded-xl text-sm hover:bg-slate-800 transition-all">
                         Cancelar
                     </button>
                     <button type="submit" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition-all">
-                        Salvar PC
+                        Salvar Prestação de Contas
                     </button>
                 </div>
             </form>
@@ -549,7 +555,7 @@
         let supabaseClient = null;
         let activeTab = 'all';
         let projects = [];
-        let expandedProjects = new Set(); // Stores expanded project IDs
+        let pcCarouselIndex = {}; // Maps projectId -> active PC index for gallery navigation
         let chartStatusInstance = null;
         let chartProgressInstance = null;
 
@@ -695,14 +701,19 @@
                 }
             }
 
-            // Expand all by default
-            projects.forEach(p => expandedProjects.add(p.id));
+            // Set default carousel indices to most recent (last item)
+            projects.forEach(p => {
+                if (p.pcs && p.pcs.length > 0) {
+                    pcCarouselIndex[p.id] = p.pcs.length - 1;
+                } else {
+                    pcCarouselIndex[p.id] = 0;
+                }
+            });
 
             updateDashboard();
         }
 
         function parseProjectData(p) {
-            let pcs = [];
             if (typeof p.code === 'string' && p.code.startsWith('{')) {
                 try {
                     const parsed = JSON.parse(p.code);
@@ -729,7 +740,8 @@
                         status: 'Pendenciada',
                         proforma: 'Não iniciada',
                         delivery_date: '2024-10-31',
-                        notes: ''
+                        notes: 'Aguardando validação do relatório mensal.',
+                        documentation: 'Processo iniciado em Junho.\n- Documentação enviada dia 10/06\n- Pendência encontrada na nota fiscal #201'
                     },
                     {
                         id: 'pc_2',
@@ -737,7 +749,8 @@
                         status: 'Aprovada',
                         proforma: 'Não iniciada',
                         delivery_date: '2025-04-30',
-                        notes: ''
+                        notes: 'Aprovado sem restrições.',
+                        documentation: 'Todas as aprovações foram concluídas na primeira rodada.'
                     },
                     {
                         id: 'pc_3',
@@ -745,7 +758,8 @@
                         status: 'Aprovada com pendência',
                         proforma: 'Emitida',
                         delivery_date: '2026-05-31',
-                        notes: 'Apos aprovação solicitar reabertura pra inserir despesas excluidas'
+                        notes: 'Apos aprovação solicitar reabertura pra inserir despesas excluidas',
+                        documentation: 'Documentação enviada em Dezembro.\nObservação do auditor: Reabrir para inclusão de notas retroativas.'
                     }
                 ]
             };
@@ -772,7 +786,7 @@
                         balance: p.balance,
                         progress: calculateProjectProgress(p)
                     };
-                    if (p.id.length > 20) { // Supabase UUID
+                    if (p.id.length > 20) {
                         await supabaseClient.from('projects').update(payload).eq('id', p.id);
                     } else {
                         const { data } = await supabaseClient.from('projects').insert([payload]).select();
@@ -813,7 +827,7 @@
                     pcs: []
                 };
                 projects.push(newPrj);
-                expandedProjects.add(newPrj.id);
+                pcCarouselIndex[newPrj.id] = 0;
             }
 
             await saveProjectsState();
@@ -835,10 +849,30 @@
             loadProjects();
         }
 
-        // --- PC OPERATIONS ---
+        // --- PC MODAL TABS & ACTIONS ---
+        function switchPCTab(tab) {
+            const btnDetails = document.getElementById('pc-tab-btn-details');
+            const btnDoc = document.getElementById('pc-tab-btn-doc');
+            const tabDetails = document.getElementById('pc-tab-details');
+            const tabDoc = document.getElementById('pc-tab-doc');
+
+            if (tab === 'details') {
+                btnDetails.className = "pb-3 text-xs font-semibold border-b-2 border-indigo-500 text-indigo-400 flex items-center gap-1.5";
+                btnDoc.className = "pb-3 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5";
+                tabDetails.classList.remove('hidden');
+                tabDoc.classList.add('hidden');
+            } else {
+                btnDoc.className = "pb-3 text-xs font-semibold border-b-2 border-indigo-500 text-indigo-400 flex items-center gap-1.5";
+                btnDetails.className = "pb-3 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5";
+                tabDoc.classList.remove('hidden');
+                tabDetails.classList.add('hidden');
+            }
+        }
+
         function openPCModal(projectId, pcId = null) {
             document.getElementById('pc-project-id').value = projectId;
             const title = document.getElementById('modal-pc-title');
+            switchPCTab('details');
             
             if (pcId) {
                 const prj = projects.find(p => p.id === projectId);
@@ -851,6 +885,7 @@
                     document.getElementById('pc-proforma').value = pc.proforma || 'Não iniciada';
                     document.getElementById('pc-delivery-date').value = pc.delivery_date || '';
                     document.getElementById('pc-notes').value = pc.notes || '';
+                    document.getElementById('pc-documentation').value = pc.documentation || '';
                 }
             } else {
                 title.innerHTML = `<i data-lucide="file-plus" class="w-5 h-5 text-indigo-400"></i><span>Adicionar Prestação de Contas (PC)</span>`;
@@ -875,6 +910,7 @@
             const proforma = document.getElementById('pc-proforma').value;
             const delivery_date = document.getElementById('pc-delivery-date').value;
             const notes = document.getElementById('pc-notes').value;
+            const documentation = document.getElementById('pc-documentation').value;
 
             const prj = projects.find(p => p.id === projectId);
             if (prj) {
@@ -883,17 +919,20 @@
                 if (pcId) {
                     const idx = prj.pcs.findIndex(pc => pc.id === pcId);
                     if (idx !== -1) {
-                        prj.pcs[idx] = { id: pcId, name, status, proforma, delivery_date, notes };
+                        prj.pcs[idx] = { id: pcId, name, status, proforma, delivery_date, notes, documentation };
                     }
                 } else {
-                    prj.pcs.push({
+                    const newPc = {
                         id: 'pc_' + Date.now(),
                         name,
                         status,
                         proforma,
                         delivery_date,
-                        notes
-                    });
+                        notes,
+                        documentation
+                    };
+                    prj.pcs.push(newPc);
+                    pcCarouselIndex[projectId] = prj.pcs.length - 1; // Auto focus newly added PC
                 }
                 await saveProjectsState();
             }
@@ -908,25 +947,32 @@
             const prj = projects.find(p => p.id === projectId);
             if (prj) {
                 prj.pcs = prj.pcs.filter(pc => pc.id !== pcId);
+                if (pcCarouselIndex[projectId] >= prj.pcs.length) {
+                    pcCarouselIndex[projectId] = Math.max(0, prj.pcs.length - 1);
+                }
                 await saveProjectsState();
             }
             showToast('PC removida', 'info');
             loadProjects();
         }
 
-        function toggleExpand(projectId) {
-            if (expandedProjects.has(projectId)) {
-                expandedProjects.delete(projectId);
-            } else {
-                expandedProjects.add(projectId);
+        function navigatePC(projectId, direction) {
+            const prj = projects.find(p => p.id === projectId);
+            if (!prj || !prj.pcs || prj.pcs.length === 0) return;
+
+            let currentIdx = pcCarouselIndex[projectId] || 0;
+            if (direction === 'prev' && currentIdx > 0) {
+                pcCarouselIndex[projectId] = currentIdx - 1;
+            } else if (direction === 'next' && currentIdx < prj.pcs.length - 1) {
+                pcCarouselIndex[projectId] = currentIdx + 1;
             }
-            renderProjectsTable();
+            renderGallery();
         }
 
         // --- DASHBOARD RENDER & TABS ---
         function updateDashboard() {
             renderKPIs();
-            renderProjectsTable();
+            renderGallery();
             if (activeTab === 'charts') renderCharts();
         }
 
@@ -959,17 +1005,17 @@
                 }
             });
 
-            const tableContainer = document.getElementById('view-table-container');
+            const galleryContainer = document.getElementById('view-gallery-container');
             const chartsContainer = document.getElementById('view-charts-container');
 
             if (tab === 'charts') {
-                tableContainer.classList.add('hidden');
+                galleryContainer.classList.add('hidden');
                 chartsContainer.classList.remove('hidden');
                 renderCharts();
             } else {
-                tableContainer.classList.remove('hidden');
+                galleryContainer.classList.remove('hidden');
                 chartsContainer.classList.add('hidden');
-                renderProjectsTable();
+                renderGallery();
             }
         }
 
@@ -988,9 +1034,10 @@
             return `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${cls}">${status}</span>`;
         }
 
-        function renderProjectsTable() {
-            const tbody = document.getElementById('projects-table-body');
-            const search = document.getElementById('table-search').value.toLowerCase();
+        // --- GALLERY RENDERING ---
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            const search = document.getElementById('gallery-search').value.toLowerCase();
             const emptyState = document.getElementById('empty-state');
 
             let filtered = [...projects];
@@ -1008,7 +1055,7 @@
                 filtered.sort((a, b) => (b.balance || 0) - (a.balance || 0));
             }
 
-            tbody.innerHTML = '';
+            grid.innerHTML = '';
 
             if (filtered.length === 0) {
                 emptyState.classList.remove('hidden');
@@ -1018,81 +1065,135 @@
             }
 
             filtered.forEach(p => {
-                const isExpanded = expandedProjects.has(p.id);
                 const progressPct = calculateProjectProgress(p);
+                const pcs = p.pcs || [];
+                const pcCount = pcs.length;
 
-                // --- PROJECT HEADER ROW ---
-                const trPrj = document.createElement('tr');
-                trPrj.className = "bg-slate-900/80 font-medium border-b border-slate-800";
-                trPrj.innerHTML = `
-                    <td class="py-3 px-4">
-                        <button onclick="toggleExpand('${p.id}')" class="text-slate-400 hover:text-white p-1 rounded">
-                            <i data-lucide="${isExpanded ? 'chevron-down' : 'chevron-right'}" class="w-4 h-4"></i>
-                        </button>
-                    </td>
-                    <td class="py-3 px-4">${getStatusBadge(p.status)}</td>
-                    <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
-                        <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
-                        <span>${p.code}</span>
-                    </td>
-                    <td class="py-3 px-4">
-                        <div class="flex items-center space-x-2 w-28">
-                            <div class="flex-1 bg-slate-800 rounded-full h-2 overflow-hidden">
-                                <div class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: ${progressPct}%"></div>
-                            </div>
-                            <span class="text-xs text-slate-400">${progressPct}%</span>
-                        </div>
-                    </td>
-                    <td class="py-3 px-4 text-xs text-slate-400">-</td>
-                    <td class="py-3 px-4 font-bold text-emerald-400">R$ ${(p.balance || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                    <td class="py-3 px-4 text-right space-x-1">
-                        <button onclick="openPCModal('${p.id}')" title="Adicionar PC" class="p-1 text-indigo-400 hover:text-indigo-300 rounded hover:bg-slate-800">
-                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
-                        </button>
-                        <button onclick="openProjectModal('${p.id}')" title="Editar Projeto" class="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800">
-                            <i data-lucide="edit-3" class="w-4 h-4"></i>
-                        </button>
-                        <button onclick="deleteProject('${p.id}')" title="Excluir Projeto" class="p-1 text-slate-400 hover:text-rose-400 rounded hover:bg-slate-800">
-                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(trPrj);
-
-                // --- PC SUB-ROWS ---
-                if (isExpanded && p.pcs && p.pcs.length > 0) {
-                    p.pcs.forEach(pc => {
-                        const trPc = document.createElement('tr');
-                        trPc.className = "hover:bg-slate-800/30 transition-colors bg-slate-950/30 border-b border-slate-800/40 text-xs";
-                        trPc.innerHTML = `
-                            <td class="py-2.5 px-4 text-center">
-                                ${getStatusBadge(pc.proforma || 'Não iniciada')}
-                            </td>
-                            <td class="py-2.5 px-4">
-                                ${getStatusBadge(pc.status)}
-                            </td>
-                            <td class="py-2.5 px-4 text-slate-200 pl-8">
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="file-code-2" class="w-3.5 h-3.5 text-slate-500"></i>
-                                    <span class="font-medium">${pc.name}</span>
-                                    ${pc.notes ? `<span class="text-slate-500 text-[11px] ml-2 italic">- ${pc.notes}</span>` : ''}
-                                </div>
-                            </td>
-                            <td class="py-2.5 px-4 text-slate-500">-</td>
-                            <td class="py-2.5 px-4 text-slate-400">${pc.delivery_date ? formatDate(pc.delivery_date) : '-'}</td>
-                            <td class="py-2.5 px-4 text-slate-500">-</td>
-                            <td class="py-2.5 px-4 text-right space-x-1">
-                                <button onclick="openPCModal('${p.id}', '${pc.id}')" class="p-1 text-slate-400 hover:text-indigo-400 rounded hover:bg-slate-800">
-                                    <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
-                                </button>
-                                <button onclick="deletePC('${p.id}', '${pc.id}')" class="p-1 text-slate-400 hover:text-rose-400 rounded hover:bg-slate-800">
-                                    <i data-lucide="trash" class="w-3.5 h-3.5"></i>
-                                </button>
-                            </td>
-                        `;
-                        tbody.appendChild(trPc);
-                    });
+                // Ensure valid current PC index for this project
+                if (pcCarouselIndex[p.id] === undefined || pcCarouselIndex[p.id] >= pcCount) {
+                    pcCarouselIndex[p.id] = Math.max(0, pcCount - 1);
                 }
+                const activePcIdx = pcCarouselIndex[p.id];
+                const activePc = pcs[activePcIdx] || null;
+
+                const card = document.createElement('div');
+                card.className = "glass-panel rounded-2xl border border-slate-800 p-5 flex flex-col justify-between space-y-4 hover:border-slate-700 transition-all shadow-xl animate-fade-in";
+
+                card.innerHTML = `
+                    <!-- Project Header Info -->
+                    <div>
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-md border border-indigo-500/20">
+                                    Projeto
+                                </span>
+                                <h3 class="font-bold text-white text-base mt-1.5 leading-snug line-clamp-2" title="${p.code}">${p.code}</h3>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <button onclick="openProjectModal('${p.id}')" title="Editar Projeto" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-all">
+                                    <i data-lucide="edit-3" class="w-4 h-4"></i>
+                                </button>
+                                <button onclick="deleteProject('${p.id}')" title="Excluir Projeto" class="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition-all">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar & Balance -->
+                        <div class="grid grid-cols-2 gap-3 py-3 border-y border-slate-800/80 my-3 text-xs">
+                            <div>
+                                <span class="text-slate-400 block text-[11px]">Progresso</span>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex-1 bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                                        <div class="bg-indigo-500 h-full rounded-full" style="width: ${progressPct}%"></div>
+                                    </div>
+                                    <span class="font-bold text-slate-300 text-[11px]">${progressPct}%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block text-[11px]">Saldo em Conta</span>
+                                <span class="font-bold text-emerald-400 block mt-0.5">R$ ${(p.balance || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PC Carousel Container -->
+                    <div class="bg-slate-900/60 rounded-xl p-3.5 border border-slate-800/80 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="file-text" class="w-4 h-4 text-purple-400"></i>
+                                <span class="text-xs font-semibold text-slate-300">
+                                    PCs Cadastradas: <span class="text-indigo-400 font-bold">${pcCount}</span>
+                                </span>
+                            </div>
+
+                            <!-- Carousel Navigation Controls -->
+                            ${pcCount > 1 ? `
+                                <div class="flex items-center space-x-1">
+                                    <button onclick="navigatePC('${p.id}', 'prev')" ${activePcIdx === 0 ? 'disabled class="opacity-30 cursor-not-allowed p-1"' : 'class="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800"'}>
+                                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-[10px] text-slate-500 font-mono">${activePcIdx + 1}/${pcCount}</span>
+                                    <button onclick="navigatePC('${p.id}', 'next')" ${activePcIdx === pcCount - 1 ? 'disabled class="opacity-30 cursor-not-allowed p-1"' : 'class="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800"'}>
+                                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <!-- Active PC Details Card -->
+                        ${activePc ? `
+                            <div class="space-y-2 pt-1 border-t border-slate-800/60">
+                                <div class="flex justify-between items-start gap-2">
+                                    <span class="font-semibold text-xs text-white line-clamp-1" title="${activePc.name}">${activePc.name}</span>
+                                    <span class="text-[10px] font-medium text-slate-400 whitespace-nowrap">${activePcIdx === pcCount - 1 ? '• Mais Atual' : '• Histórico'}</span>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 items-center">
+                                    ${getStatusBadge(activePc.status)}
+                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
+                                        Proforma: ${activePc.proforma || 'Não iniciada'}
+                                    </span>
+                                </div>
+
+                                ${activePc.delivery_date ? `
+                                    <div class="text-[11px] text-slate-400 flex items-center gap-1.5 pt-1">
+                                        <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-500"></i>
+                                        <span>Entrega: ${formatDate(activePc.delivery_date)}</span>
+                                    </div>
+                                ` : ''}
+
+                                ${activePc.notes ? `
+                                    <div class="text-[11px] text-slate-400 bg-slate-950/40 p-2 rounded-lg border border-slate-800/60 line-clamp-2">
+                                        <strong class="text-indigo-400">Nota:</strong> ${activePc.notes}
+                                    </div>
+                                ` : ''}
+
+                                <!-- PC Action buttons -->
+                                <div class="flex justify-between items-center pt-2 border-t border-slate-800/40 text-xs">
+                                    <button onclick="openPCModal('${p.id}', '${activePc.id}')" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center gap-1">
+                                        <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Ver Anotações e Editar
+                                    </button>
+                                    <button onclick="deletePC('${p.id}', '${activePc.id}')" class="text-slate-500 hover:text-rose-400">
+                                        <i data-lucide="trash" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        ` : `
+                            <div class="text-center py-4">
+                                <p class="text-xs text-slate-500">Nenhuma PC cadastrada para este projeto.</p>
+                            </div>
+                        `}
+                    </div>
+
+                    <!-- Bottom Action Button -->
+                    <button onclick="openPCModal('${p.id}')" class="w-full py-2 bg-slate-800/80 hover:bg-slate-800 text-slate-200 hover:text-white font-medium rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 border border-slate-700/60">
+                        <i data-lucide="plus" class="w-3.5 h-3.5 text-indigo-400"></i>
+                        <span>Adicionar Nova PC ao Projeto</span>
+                    </button>
+                `;
+
+                grid.appendChild(card);
             });
 
             lucide.createIcons();
