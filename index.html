@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <!-- AUTH SCREEN (Matches Provided Image Design) -->
+    <!-- AUTH SCREEN -->
     <div id="auth-screen" class="min-h-screen flex items-center justify-center p-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-slate-900 to-black">
         <div class="glass-panel w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2 border border-slate-800">
             
@@ -115,7 +115,7 @@
                         Área de Membros & Workspace Privado
                     </h1>
                     <p class="text-slate-400 text-sm leading-relaxed mb-8">
-                        Acompanhamento profissional de entregas com dados isolados por membro, sincronização em tempo real e visualização executiva superior ao Notion.
+                        Acompanhamento profissional de entregas e Prestações de Contas (PCs) com dados isolados por membro e sincronização em nuvem.
                     </p>
                 </div>
 
@@ -131,14 +131,14 @@
                         <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
                             <i data-lucide="cloud" class="w-4 h-4"></i>
                         </div>
-                        <span>Progresso e tarefas salvas em nuvem</span>
+                        <span>Controle de Proforma e Prazos por PC</span>
                     </div>
 
                     <div class="flex items-center space-x-3 text-slate-300 text-sm">
                         <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
                             <i data-lucide="pie-chart" class="w-4 h-4"></i>
                         </div>
-                        <span>Indicadores KPIs e gráficos gerenciais</span>
+                        <span>Indicadores KPIs e consolidação financeira</span>
                     </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@
         </div>
     </div>
 
-    <!-- MAIN DASHBOARD SCREEN (Initially Hidden) -->
+    <!-- MAIN DASHBOARD SCREEN -->
     <div id="dashboard-screen" class="hidden flex-1 flex flex-col">
         
         <!-- Header Nav -->
@@ -231,7 +231,7 @@
                             <i data-lucide="layers" class="w-5 h-5 text-white"></i>
                         </div>
                         <div>
-                            <h2 class="font-bold text-white text-base leading-none">Gestor de Projetos Pro</h2>
+                            <h2 class="font-bold text-white text-base leading-none">Gestor de Projetos & PCs</h2>
                             <p id="workspace-type-badge" class="text-xs text-indigo-400 mt-1 font-medium">Workspace Privado</p>
                         </div>
                     </div>
@@ -279,18 +279,18 @@
 
                 <div class="glass-card p-5 rounded-2xl">
                     <div class="flex justify-between items-start">
-                        <span class="text-xs font-medium text-slate-400">Alta Prioridade</span>
-                        <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400"><i data-lucide="alert-circle" class="w-4 h-4"></i></div>
+                        <span class="text-xs font-medium text-slate-400">Total de PCs</span>
+                        <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400"><i data-lucide="file-text" class="w-4 h-4"></i></div>
                     </div>
-                    <p id="kpi-high-priority" class="text-2xl font-bold text-rose-400 mt-2">0</p>
+                    <p id="kpi-pcs-total" class="text-2xl font-bold text-purple-400 mt-2">0</p>
                 </div>
 
                 <div class="glass-card p-5 rounded-2xl">
                     <div class="flex justify-between items-start">
-                        <span class="text-xs font-medium text-slate-400">Em Progresso Média</span>
-                        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400"><i data-lucide="clock" class="w-4 h-4"></i></div>
+                        <span class="text-xs font-medium text-slate-400">PCs Pendenciadas</span>
+                        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400"><i data-lucide="alert-circle" class="w-4 h-4"></i></div>
                     </div>
-                    <p id="kpi-progress-avg" class="text-2xl font-bold text-amber-400 mt-2">0%</p>
+                    <p id="kpi-pending-pcs" class="text-2xl font-bold text-amber-400 mt-2">0</p>
                 </div>
 
                 <div class="glass-card p-5 rounded-2xl">
@@ -306,19 +306,11 @@
             <div class="glass-panel p-1.5 rounded-2xl flex flex-wrap gap-1 border border-slate-800 text-sm overflow-x-auto">
                 <button onclick="switchDashboardTab('all')" id="dash-tab-all" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all bg-indigo-600 text-white">
                     <i data-lucide="list" class="w-4 h-4"></i>
-                    <span>Tabela de Projetos</span>
+                    <span>Projetos e PCs</span>
                 </button>
-                <button onclick="switchDashboardTab('high')" id="dash-tab-high" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
-                    <i data-lucide="flame" class="w-4 h-4"></i>
-                    <span>Alta Prioridade</span>
-                </button>
-                <button onclick="switchDashboardTab('dates')" id="dash-tab-dates" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
-                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                    <span>Tabela por Data de Entrega</span>
-                </button>
-                <button onclick="switchDashboardTab('review')" id="dash-tab-review" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
-                    <i data-lucide="check-square" class="w-4 h-4"></i>
-                    <span>Verificar</span>
+                <button onclick="switchDashboardTab('pending')" id="dash-tab-pending" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
+                    <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                    <span>Com Pendências</span>
                 </button>
                 <button onclick="switchDashboardTab('balance')" id="dash-tab-balance" class="px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50">
                     <i data-lucide="wallet" class="w-4 h-4"></i>
@@ -335,22 +327,22 @@
                 <div class="p-4 border-b border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="relative w-full sm:w-72">
                         <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-slate-500"></i>
-                        <input type="text" id="table-search" oninput="renderProjectsTable()" placeholder="Buscar código ou status..." class="w-full glass-input pl-9 pr-4 py-1.5 rounded-xl text-xs">
+                        <input type="text" id="table-search" oninput="renderProjectsTable()" placeholder="Buscar projeto, PC ou status..." class="w-full glass-input pl-9 pr-4 py-1.5 rounded-xl text-xs">
                     </div>
-                    <span id="active-tab-title" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Todas as Entregas</span>
+                    <span id="active-tab-title" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Acompanhamento de Prestações de Contas</span>
                 </div>
 
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="border-b border-slate-800 bg-slate-900/50 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                                <th class="py-3 px-4">Código / Projeto</th>
-                                <th class="py-3 px-4">Status</th>
-                                <th class="py-3 px-4">Prioridade</th>
-                                <th class="py-3 px-4">Progresso</th>
-                                <th class="py-3 px-4">Data de Entrega</th>
-                                <th class="py-3 px-4">Saldo (R$)</th>
-                                <th class="py-3 px-4 text-right">Ações</th>
+                                <th class="py-3 px-4 w-12">Proforma</th>
+                                <th class="py-3 px-4 w-48">Status da PC / Projeto</th>
+                                <th class="py-3 px-4">Nome do Projeto / Detalhamento da PC</th>
+                                <th class="py-3 px-4 w-32">Progresso</th>
+                                <th class="py-3 px-4 w-36">Prazo de Entrega</th>
+                                <th class="py-3 px-4 w-32">Saldo (R$)</th>
+                                <th class="py-3 px-4 text-right w-24">Ações</th>
                             </tr>
                         </thead>
                         <tbody id="projects-table-body" class="divide-y divide-slate-800/60 text-sm">
@@ -365,7 +357,7 @@
                         <i data-lucide="inbox" class="w-6 h-6"></i>
                     </div>
                     <p class="text-slate-300 font-medium text-sm">Nenhum projeto encontrado nesta visualização</p>
-                    <p class="text-slate-500 text-xs mt-1">Crie um novo projeto ou altere os filtros selecionados.</p>
+                    <p class="text-slate-500 text-xs mt-1">Crie um novo projeto para gerenciar suas prestações de contas.</p>
                 </div>
             </div>
 
@@ -373,7 +365,7 @@
             <div id="view-charts-container" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
                 <div class="glass-panel p-6 rounded-2xl border border-slate-800">
                     <h3 class="text-sm font-semibold text-slate-200 mb-4 flex items-center gap-2">
-                        <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-400"></i> Distribuição por Status
+                        <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-400"></i> Distribuição do Status das PCs
                     </h3>
                     <div class="h-64 flex items-center justify-center">
                         <canvas id="chart-status"></canvas>
@@ -382,7 +374,7 @@
 
                 <div class="glass-panel p-6 rounded-2xl border border-slate-800">
                     <h3 class="text-sm font-semibold text-slate-200 mb-4 flex items-center gap-2">
-                        <i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i> Progresso x Projeto
+                        <i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i> Conclusão por Projeto
                     </h3>
                     <div class="h-64 flex items-center justify-center">
                         <canvas id="chart-progress"></canvas>
@@ -410,46 +402,25 @@
                 <input type="hidden" id="project-id">
 
                 <div>
-                    <label class="text-xs font-semibold text-slate-400 block mb-1">Código do Projeto / Nome</label>
-                    <input type="text" id="project-code" required placeholder="Ex: PRJ-2026-01" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
+                    <label class="text-xs font-semibold text-slate-400 block mb-1">Código / Nome do Projeto</label>
+                    <input type="text" id="project-code" required placeholder="Ex: 420407 - SHELL/EP/OTIC_DGT7" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="text-xs font-semibold text-slate-400 block mb-1">Status</label>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Status do Projeto</label>
                         <select id="project-status" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Em elaboração">Em elaboração</option>
+                            <option value="Concluído">Concluído</option>
                             <option value="Não iniciada">Não iniciada</option>
-                            <option value="Em andamento">Em andamento</option>
-                            <option value="Em verificação">Em verificação</option>
-                            <option value="Concluída">Concluída</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="text-xs font-semibold text-slate-400 block mb-1">Prioridade</label>
-                        <select id="project-priority" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
-                            <option value="Baixa">Baixa</option>
-                            <option value="Média">Média</option>
-                            <option value="Alta">Alta</option>
-                        </select>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Saldo do Projeto (R$)</label>
+                        <input type="number" step="0.01" id="project-balance" placeholder="0.00" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="text-xs font-semibold text-slate-400 block mb-1">Progresso (%)</label>
-                        <input type="number" id="project-progress" min="0" max="100" value="0" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
-                    </div>
-
-                    <div>
-                        <label class="text-xs font-semibold text-slate-400 block mb-1">Data de Entrega</label>
-                        <input type="date" id="project-delivery" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="text-xs font-semibold text-slate-400 block mb-1">Saldo do Projeto (R$)</label>
-                    <input type="number" step="0.01" id="project-balance" placeholder="0.00" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
                 </div>
 
                 <div class="pt-4 flex space-x-3">
@@ -458,6 +429,73 @@
                     </button>
                     <button type="submit" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition-all">
                         Salvar Projeto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CREATE/EDIT PC MODAL -->
+    <div id="modal-pc" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-panel w-full max-w-lg rounded-2xl border border-slate-800 overflow-hidden shadow-2xl animate-fade-in">
+            <div class="p-5 border-b border-slate-800 flex justify-between items-center bg-slate-900/60">
+                <h3 id="modal-pc-title" class="text-base font-bold text-white flex items-center gap-2">
+                    <i data-lucide="file-plus" class="w-5 h-5 text-indigo-400"></i>
+                    <span>Adicionar Prestação de Contas (PC)</span>
+                </h3>
+                <button onclick="closePCModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form id="pc-form" onsubmit="handleSavePC(event)" class="p-6 space-y-4">
+                <input type="hidden" id="pc-project-id">
+                <input type="hidden" id="pc-id">
+
+                <div>
+                    <label class="text-xs font-semibold text-slate-400 block mb-1">Descrição / Identificação da PC</label>
+                    <input type="text" id="pc-name" required placeholder="Ex: pc#1 06/06/2024 à 31/10/2024" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Status da PC</label>
+                        <select id="pc-status" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
+                            <option value="Não iniciada">Não iniciada</option>
+                            <option value="Em elaboração">Em elaboração</option>
+                            <option value="Emitida">Emitida</option>
+                            <option value="Pendenciada">Pendenciada</option>
+                            <option value="Aprovada com pendência">Aprovada com pendência</option>
+                            <option value="Aprovada">Aprovada</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-semibold text-slate-400 block mb-1">Status Proforma</label>
+                        <select id="pc-proforma" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm bg-slate-900">
+                            <option value="Não iniciada">Não iniciada</option>
+                            <option value="Emitida">Emitida</option>
+                            <option value="Paga">Paga</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-xs font-semibold text-slate-400 block mb-1">Prazo / Data de Entrega</label>
+                    <input type="date" id="pc-delivery-date" class="w-full glass-input px-3.5 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="text-xs font-semibold text-slate-400 block mb-1">Observações / Notas</label>
+                    <textarea id="pc-notes" rows="2" placeholder="Ex: Solicitar alteração do item de pesquisador..." class="w-full glass-input px-3.5 py-2 rounded-xl text-sm"></textarea>
+                </div>
+
+                <div class="pt-4 flex space-x-3">
+                    <button type="button" onclick="closePCModal()" class="flex-1 py-2.5 border border-slate-700 text-slate-300 font-semibold rounded-xl text-sm hover:bg-slate-800 transition-all">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition-all">
+                        Salvar PC
                     </button>
                 </div>
             </form>
@@ -484,12 +522,12 @@
 
                 <div>
                     <label class="text-xs font-semibold text-slate-400 block mb-1">Project URL</label>
-                    <input type="text" id="cfg-supabase-url" placeholder="https://xyz.supabase.co" class="w-full glass-input px-3.5 py-2 rounded-xl text-xs">
+                    <input type="text" id="cfg-supabase-url" value="https://hpwgyhjztocogghcffgm.supabase.co" placeholder="https://xyz.supabase.co" class="w-full glass-input px-3.5 py-2 rounded-xl text-xs">
                 </div>
 
                 <div>
                     <label class="text-xs font-semibold text-slate-400 block mb-1">Anon Public Key</label>
-                    <input type="password" id="cfg-supabase-key" placeholder="eyJhbGciOiJIUzI1NiIsIn..." class="w-full glass-input px-3.5 py-2 rounded-xl text-xs">
+                    <input type="password" id="cfg-supabase-key" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwd2d5aGp6dG9jb2dnaGNmZmdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzNTI3MjYsImV4cCI6MjA1NTkyODcyNn0.74h6mX-H1oG81gKyl-aL9y9f-9Xh6sB6yK" placeholder="eyJhbGciOiJIUzI1NiIsIn..." class="w-full glass-input px-3.5 py-2 rounded-xl text-xs">
                 </div>
 
                 <div class="pt-2 flex space-x-3">
@@ -506,11 +544,12 @@
 
     <script>
         // --- GLOBAL STATE ---
-        let currentAuthMode = 'register'; // 'register' or 'login'
-        let currentUser = null; // Stores authenticated user info or Guest
+        let currentAuthMode = 'register';
+        let currentUser = null;
         let supabaseClient = null;
         let activeTab = 'all';
         let projects = [];
+        let expandedProjects = new Set(); // Stores expanded project IDs
         let chartStatusInstance = null;
         let chartProgressInstance = null;
 
@@ -521,10 +560,12 @@
             checkAutoLogin();
         };
 
-        // Initialize Supabase Client if keys exist
         function initSupabase() {
-            const storedUrl = localStorage.getItem('gestor_supabase_url');
-            const storedKey = localStorage.getItem('gestor_supabase_key');
+            const defaultUrl = 'https://hpwgyhjztocogghcffgm.supabase.co';
+            const defaultKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwd2d5aGp6dG9jb2dnaGNmZmdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzNTI3MjYsImV4cCI6MjA1NTkyODcyNn0.74h6mX-H1oG81gKyl-aL9y9f-9Xh6sB6yK';
+
+            const storedUrl = localStorage.getItem('gestor_supabase_url') || defaultUrl;
+            const storedKey = localStorage.getItem('gestor_supabase_key') || defaultKey;
 
             if (storedUrl && storedKey && typeof supabase !== 'undefined') {
                 try {
@@ -564,7 +605,6 @@
             const name = document.getElementById('auth-name').value || 'Membro';
 
             if (supabaseClient) {
-                // AUTH WITH SUPABASE
                 if (currentAuthMode === 'register') {
                     const { data, error } = await supabaseClient.auth.signUp({
                         email,
@@ -588,7 +628,6 @@
                     loginUserSession({ id: data.user.id, email, name: userName });
                 }
             } else {
-                // LOCALSTORAGE FALLBACK
                 showToast('Modo Local: Supabase não configurado', 'info');
                 loginUserSession({ id: 'local-user', email, name });
             }
@@ -603,13 +642,11 @@
             currentUser = user;
             localStorage.setItem('gestor_active_user', JSON.stringify(user));
             
-            // Update UI User Info
             document.getElementById('user-display-name').innerText = user.name;
             document.getElementById('user-display-email').innerText = user.email;
             document.getElementById('user-avatar').innerText = user.name.charAt(0).toUpperCase();
             document.getElementById('workspace-type-badge').innerText = user.isGuest ? 'Workspace Convidado' : 'Workspace Privado';
 
-            // Show Dashboard
             document.getElementById('auth-screen').classList.add('hidden');
             document.getElementById('dashboard-screen').classList.remove('hidden');
 
@@ -633,40 +670,91 @@
             showToast('Sessão encerrada', 'info');
         }
 
-        // --- DATA CRUD OPERATIONS ---
+        // --- DATA CRUD & PC LOGIC ---
         async function loadProjects() {
             if (supabaseClient && currentUser && !currentUser.isGuest) {
-                // Fetch from Supabase
                 const { data, error } = await supabaseClient
                     .from('projects')
                     .select('*')
                     .eq('user_id', currentUser.id);
 
-                if (!error && data) {
-                    projects = data;
+                if (!error && data && data.length > 0) {
+                    projects = data.map(p => parseProjectData(p));
                 } else {
                     projects = getLocalProjects();
+                    if (projects.length === 0) {
+                        projects = [generateRandomDemoProject()];
+                        saveProjectsState();
+                    }
                 }
             } else {
-                // Fetch from LocalStorage
                 projects = getLocalProjects();
+                if (projects.length === 0) {
+                    projects = [generateRandomDemoProject()];
+                    saveLocalProjects();
+                }
             }
 
+            // Expand all by default
+            projects.forEach(p => expandedProjects.add(p.id));
+
             updateDashboard();
+        }
+
+        function parseProjectData(p) {
+            let pcs = [];
+            if (typeof p.code === 'string' && p.code.startsWith('{')) {
+                try {
+                    const parsed = JSON.parse(p.code);
+                    return { ...p, code: parsed.code, pcs: parsed.pcs || [] };
+                } catch(e){}
+            }
+            return { ...p, pcs: p.pcs || [] };
+        }
+
+        function generateRandomDemoProject() {
+            const randomCodeNum = Math.floor(100000 + Math.random() * 900000);
+            const randomSuffix = Math.floor(1 + Math.random() * 9);
+            const randomBalance = Math.floor(25000 + Math.random() * 75000);
+
+            return {
+                id: 'prj_' + Date.now(),
+                code: `${randomCodeNum} - SHELL/EP/OTIC_DGT${randomSuffix}`,
+                status: 'Em Andamento',
+                balance: randomBalance,
+                pcs: [
+                    {
+                        id: 'pc_1',
+                        name: 'pc#1 06/06/2024 à 31/10/2024',
+                        status: 'Pendenciada',
+                        proforma: 'Não iniciada',
+                        delivery_date: '2024-10-31',
+                        notes: ''
+                    },
+                    {
+                        id: 'pc_2',
+                        name: 'pc#5 01/11/2024 à 30/04/2025',
+                        status: 'Aprovada',
+                        proforma: 'Não iniciada',
+                        delivery_date: '2025-04-30',
+                        notes: ''
+                    },
+                    {
+                        id: 'pc_3',
+                        name: 'PC#18 - 01/12/2025 a 31/05/2026',
+                        status: 'Aprovada com pendência',
+                        proforma: 'Emitida',
+                        delivery_date: '2026-05-31',
+                        notes: 'Apos aprovação solicitar reabertura pra inserir despesas excluidas'
+                    }
+                ]
+            };
         }
 
         function getLocalProjects() {
             const key = `gestor_projects_${currentUser?.id || 'demo'}`;
             const stored = localStorage.getItem(key);
-            if (stored) return JSON.parse(stored);
-
-            // Default Mock Data for demo
-            return [
-                { id: '1', code: 'PRJ-SISTEMA-WEB', status: 'Em andamento', priority: 'Alta', progress: 75, delivery_date: '2026-10-15', balance: 12500.00 },
-                { id: '2', code: 'PRJ-APP-MOBILE', status: 'Em verificação', priority: 'Média', progress: 90, delivery_date: '2026-09-30', balance: 8400.00 },
-                { id: '3', code: 'PRJ-DESIGN-SYSTEM', status: 'Concluída', priority: 'Baixa', progress: 100, delivery_date: '2026-08-20', balance: 4500.00 },
-                { id: '4', code: 'PRJ-BANCO-DADOS', status: 'Não iniciada', priority: 'Alta', progress: 10, delivery_date: '2026-11-05', balance: 6000.00 }
-            ];
+            return stored ? JSON.parse(stored) : [];
         }
 
         function saveLocalProjects() {
@@ -674,51 +762,165 @@
             localStorage.setItem(key, JSON.stringify(projects));
         }
 
+        async function saveProjectsState() {
+            if (supabaseClient && currentUser && !currentUser.isGuest) {
+                for (let p of projects) {
+                    const payload = {
+                        user_id: currentUser.id,
+                        code: JSON.stringify({ code: p.code, pcs: p.pcs }),
+                        status: p.status,
+                        balance: p.balance,
+                        progress: calculateProjectProgress(p)
+                    };
+                    if (p.id.length > 20) { // Supabase UUID
+                        await supabaseClient.from('projects').update(payload).eq('id', p.id);
+                    } else {
+                        const { data } = await supabaseClient.from('projects').insert([payload]).select();
+                        if (data && data[0]) p.id = data[0].id;
+                    }
+                }
+            } else {
+                saveLocalProjects();
+            }
+        }
+
+        function calculateProjectProgress(project) {
+            if (!project.pcs || project.pcs.length === 0) return 0;
+            const completed = project.pcs.filter(pc => pc.status === 'Aprovada' || pc.status === 'Aprovada com pendência').length;
+            return Math.round((completed / project.pcs.length) * 100);
+        }
+
         async function handleSaveProject(e) {
             e.preventDefault();
             const id = document.getElementById('project-id').value;
             const code = document.getElementById('project-code').value;
             const status = document.getElementById('project-status').value;
-            const priority = document.getElementById('project-priority').value;
-            const progress = parseInt(document.getElementById('project-progress').value) || 0;
-            const delivery_date = document.getElementById('project-delivery').value;
             const balance = parseFloat(document.getElementById('project-balance').value) || 0;
 
-            const projectData = { code, status, priority, progress, delivery_date, balance };
-
-            if (supabaseClient && currentUser && !currentUser.isGuest) {
-                if (id) {
-                    await supabaseClient.from('projects').update(projectData).eq('id', id);
-                } else {
-                    await supabaseClient.from('projects').insert([{ ...projectData, user_id: currentUser.id }]);
+            if (id) {
+                const prj = projects.find(p => p.id === id);
+                if (prj) {
+                    prj.code = code;
+                    prj.status = status;
+                    prj.balance = balance;
                 }
             } else {
-                if (id) {
-                    const idx = projects.findIndex(p => p.id === id);
-                    if (idx !== -1) projects[idx] = { ...projects[idx], ...projectData };
-                } else {
-                    projects.push({ id: Date.now().toString(), ...projectData });
-                }
-                saveLocalProjects();
+                const newPrj = {
+                    id: 'prj_' + Date.now(),
+                    code,
+                    status,
+                    balance,
+                    pcs: []
+                };
+                projects.push(newPrj);
+                expandedProjects.add(newPrj.id);
             }
 
+            await saveProjectsState();
             closeProjectModal();
             showToast(id ? 'Projeto atualizado!' : 'Projeto criado!', 'success');
             loadProjects();
         }
 
         async function deleteProject(id) {
-            if (!confirm('Deseja realmente excluir este projeto?')) return;
+            if (!confirm('Deseja realmente excluir este projeto e todas as suas PCs?')) return;
 
-            if (supabaseClient && currentUser && !currentUser.isGuest) {
+            if (supabaseClient && currentUser && !currentUser.isGuest && id.length > 20) {
                 await supabaseClient.from('projects').delete().eq('id', id);
-            } else {
-                projects = projects.filter(p => p.id !== id);
-                saveLocalProjects();
             }
+            projects = projects.filter(p => p.id !== id);
+            saveLocalProjects();
 
             showToast('Projeto removido', 'info');
             loadProjects();
+        }
+
+        // --- PC OPERATIONS ---
+        function openPCModal(projectId, pcId = null) {
+            document.getElementById('pc-project-id').value = projectId;
+            const title = document.getElementById('modal-pc-title');
+            
+            if (pcId) {
+                const prj = projects.find(p => p.id === projectId);
+                const pc = prj?.pcs.find(item => item.id === pcId);
+                if (pc) {
+                    title.innerHTML = `<i data-lucide="edit-3" class="w-5 h-5 text-indigo-400"></i><span>Editar Prestação de Contas</span>`;
+                    document.getElementById('pc-id').value = pc.id;
+                    document.getElementById('pc-name').value = pc.name;
+                    document.getElementById('pc-status').value = pc.status;
+                    document.getElementById('pc-proforma').value = pc.proforma || 'Não iniciada';
+                    document.getElementById('pc-delivery-date').value = pc.delivery_date || '';
+                    document.getElementById('pc-notes').value = pc.notes || '';
+                }
+            } else {
+                title.innerHTML = `<i data-lucide="file-plus" class="w-5 h-5 text-indigo-400"></i><span>Adicionar Prestação de Contas (PC)</span>`;
+                document.getElementById('pc-form').reset();
+                document.getElementById('pc-id').value = '';
+            }
+
+            document.getElementById('modal-pc').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closePCModal() {
+            document.getElementById('modal-pc').classList.add('hidden');
+        }
+
+        async function handleSavePC(e) {
+            e.preventDefault();
+            const projectId = document.getElementById('pc-project-id').value;
+            const pcId = document.getElementById('pc-id').value;
+            const name = document.getElementById('pc-name').value;
+            const status = document.getElementById('pc-status').value;
+            const proforma = document.getElementById('pc-proforma').value;
+            const delivery_date = document.getElementById('pc-delivery-date').value;
+            const notes = document.getElementById('pc-notes').value;
+
+            const prj = projects.find(p => p.id === projectId);
+            if (prj) {
+                if (!prj.pcs) prj.pcs = [];
+
+                if (pcId) {
+                    const idx = prj.pcs.findIndex(pc => pc.id === pcId);
+                    if (idx !== -1) {
+                        prj.pcs[idx] = { id: pcId, name, status, proforma, delivery_date, notes };
+                    }
+                } else {
+                    prj.pcs.push({
+                        id: 'pc_' + Date.now(),
+                        name,
+                        status,
+                        proforma,
+                        delivery_date,
+                        notes
+                    });
+                }
+                await saveProjectsState();
+            }
+
+            closePCModal();
+            showToast('Prestação de contas salva!', 'success');
+            loadProjects();
+        }
+
+        async function deletePC(projectId, pcId) {
+            if (!confirm('Deseja excluir esta Prestação de Contas?')) return;
+            const prj = projects.find(p => p.id === projectId);
+            if (prj) {
+                prj.pcs = prj.pcs.filter(pc => pc.id !== pcId);
+                await saveProjectsState();
+            }
+            showToast('PC removida', 'info');
+            loadProjects();
+        }
+
+        function toggleExpand(projectId) {
+            if (expandedProjects.has(projectId)) {
+                expandedProjects.delete(projectId);
+            } else {
+                expandedProjects.add(projectId);
+            }
+            renderProjectsTable();
         }
 
         // --- DASHBOARD RENDER & TABS ---
@@ -730,13 +932,13 @@
 
         function renderKPIs() {
             document.getElementById('kpi-total').innerText = projects.length;
-            
-            const highPri = projects.filter(p => p.priority === 'Alta').length;
-            document.getElementById('kpi-high-priority').innerText = highPri;
 
-            const totalProgress = projects.reduce((acc, p) => acc + (p.progress || 0), 0);
-            const avgProgress = projects.length ? Math.round(totalProgress / projects.length) : 0;
-            document.getElementById('kpi-progress-avg').innerText = `${avgProgress}%`;
+            let allPCs = [];
+            projects.forEach(p => { if (p.pcs) allPCs.push(...p.pcs); });
+            document.getElementById('kpi-pcs-total').innerText = allPCs.length;
+
+            const pending = allPCs.filter(pc => pc.status === 'Pendenciada' || pc.status === 'Aprovada com pendência').length;
+            document.getElementById('kpi-pending-pcs').innerText = pending;
 
             const totalBalance = projects.reduce((acc, p) => acc + (p.balance || 0), 0);
             document.getElementById('kpi-balance-total').innerText = totalBalance.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -744,14 +946,16 @@
 
         function switchDashboardTab(tab) {
             activeTab = tab;
-            const tabs = ['all', 'high', 'dates', 'review', 'balance', 'charts'];
+            const tabs = ['all', 'pending', 'balance', 'charts'];
             
             tabs.forEach(t => {
                 const btn = document.getElementById(`dash-tab-${t}`);
-                if (t === tab) {
-                    btn.className = "px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all bg-indigo-600 text-white shadow-lg shadow-indigo-600/30";
-                } else {
-                    btn.className = "px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50";
+                if (btn) {
+                    if (t === tab) {
+                        btn.className = "px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all bg-indigo-600 text-white shadow-lg shadow-indigo-600/30";
+                    } else {
+                        btn.className = "px-4 py-2 rounded-xl font-medium text-xs flex items-center space-x-2 transition-all text-slate-400 hover:text-white hover:bg-slate-800/50";
+                    }
                 }
             });
 
@@ -769,6 +973,21 @@
             }
         }
 
+        function getStatusBadge(status) {
+            const styles = {
+                'Não iniciada': 'bg-slate-800 text-slate-400 border-slate-700',
+                'Em elaboração': 'bg-slate-800 text-slate-300 border-slate-700',
+                'Emitida': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+                'Pendenciada': 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                'Aprovada com pendência': 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                'Aprovada': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+                'Em Andamento': 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+                'Concluído': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+            };
+            const cls = styles[status] || 'bg-slate-800 text-slate-400 border-slate-700';
+            return `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${cls}">${status}</span>`;
+        }
+
         function renderProjectsTable() {
             const tbody = document.getElementById('projects-table-body');
             const search = document.getElementById('table-search').value.toLowerCase();
@@ -776,16 +995,18 @@
 
             let filtered = [...projects];
 
-            // Filter search
             if (search) {
-                filtered = filtered.filter(p => p.code.toLowerCase().includes(search) || p.status.toLowerCase().includes(search));
+                filtered = filtered.filter(p => 
+                    p.code.toLowerCase().includes(search) || 
+                    (p.pcs && p.pcs.some(pc => pc.name.toLowerCase().includes(search) || pc.status.toLowerCase().includes(search)))
+                );
             }
 
-            // Filter Active View Tab
-            if (activeTab === 'high') filtered = filtered.filter(p => p.priority === 'Alta');
-            else if (activeTab === 'dates') filtered.sort((a, b) => (a.delivery_date || '').localeCompare(b.delivery_date || ''));
-            else if (activeTab === 'review') filtered = filtered.filter(p => p.status === 'Em verificação');
-            else if (activeTab === 'balance') filtered.sort((a, b) => (b.balance || 0) - (a.balance || 0));
+            if (activeTab === 'pending') {
+                filtered = filtered.filter(p => p.pcs && p.pcs.some(pc => pc.status === 'Pendenciada' || pc.status === 'Aprovada com pendência'));
+            } else if (activeTab === 'balance') {
+                filtered.sort((a, b) => (b.balance || 0) - (a.balance || 0));
+            }
 
             tbody.innerHTML = '';
 
@@ -797,54 +1018,81 @@
             }
 
             filtered.forEach(p => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-800/30 transition-colors";
+                const isExpanded = expandedProjects.has(p.id);
+                const progressPct = calculateProjectProgress(p);
 
-                const priorityColors = {
-                    'Baixa': 'bg-slate-800 text-slate-300 border-slate-700',
-                    'Média': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-                    'Alta': 'bg-rose-500/10 text-rose-400 border-rose-500/20'
-                };
-
-                const statusColors = {
-                    'Não iniciada': 'bg-slate-800 text-slate-400',
-                    'Em andamento': 'bg-indigo-500/10 text-indigo-400',
-                    'Em verificação': 'bg-amber-500/10 text-amber-400',
-                    'Concluída': 'bg-emerald-500/10 text-emerald-400'
-                };
-
-                tr.innerHTML = `
-                    <td class="py-3 px-4 font-semibold text-white">${p.code}</td>
+                // --- PROJECT HEADER ROW ---
+                const trPrj = document.createElement('tr');
+                trPrj.className = "bg-slate-900/80 font-medium border-b border-slate-800";
+                trPrj.innerHTML = `
                     <td class="py-3 px-4">
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-800 ${statusColors[p.status] || 'bg-slate-800'}">
-                            ${p.status}
-                        </span>
+                        <button onclick="toggleExpand('${p.id}')" class="text-slate-400 hover:text-white p-1 rounded">
+                            <i data-lucide="${isExpanded ? 'chevron-down' : 'chevron-right'}" class="w-4 h-4"></i>
+                        </button>
+                    </td>
+                    <td class="py-3 px-4">${getStatusBadge(p.status)}</td>
+                    <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
+                        <span>${p.code}</span>
                     </td>
                     <td class="py-3 px-4">
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-medium border ${priorityColors[p.priority] || ''}">
-                            ${p.priority}
-                        </span>
-                    </td>
-                    <td class="py-3 px-4">
-                        <div class="flex items-center space-x-3 w-36">
+                        <div class="flex items-center space-x-2 w-28">
                             <div class="flex-1 bg-slate-800 rounded-full h-2 overflow-hidden">
-                                <div class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: ${p.progress}%"></div>
+                                <div class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: ${progressPct}%"></div>
                             </div>
-                            <span class="text-xs text-slate-400 font-medium">${p.progress}%</span>
+                            <span class="text-xs text-slate-400">${progressPct}%</span>
                         </div>
                     </td>
-                    <td class="py-3 px-4 text-xs text-slate-400">${p.delivery_date ? formatDate(p.delivery_date) : '-'}</td>
-                    <td class="py-3 px-4 font-medium text-slate-200">R$ ${(p.balance || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td class="py-3 px-4 text-xs text-slate-400">-</td>
+                    <td class="py-3 px-4 font-bold text-emerald-400">R$ ${(p.balance || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                     <td class="py-3 px-4 text-right space-x-1">
-                        <button onclick="openProjectModal('${p.id}')" class="p-1.5 text-slate-400 hover:text-indigo-400 rounded-lg hover:bg-slate-800 transition-all">
+                        <button onclick="openPCModal('${p.id}')" title="Adicionar PC" class="p-1 text-indigo-400 hover:text-indigo-300 rounded hover:bg-slate-800">
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="openProjectModal('${p.id}')" title="Editar Projeto" class="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800">
                             <i data-lucide="edit-3" class="w-4 h-4"></i>
                         </button>
-                        <button onclick="deleteProject('${p.id}')" class="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition-all">
+                        <button onclick="deleteProject('${p.id}')" title="Excluir Projeto" class="p-1 text-slate-400 hover:text-rose-400 rounded hover:bg-slate-800">
                             <i data-lucide="trash-2" class="w-4 h-4"></i>
                         </button>
                     </td>
                 `;
-                tbody.appendChild(tr);
+                tbody.appendChild(trPrj);
+
+                // --- PC SUB-ROWS ---
+                if (isExpanded && p.pcs && p.pcs.length > 0) {
+                    p.pcs.forEach(pc => {
+                        const trPc = document.createElement('tr');
+                        trPc.className = "hover:bg-slate-800/30 transition-colors bg-slate-950/30 border-b border-slate-800/40 text-xs";
+                        trPc.innerHTML = `
+                            <td class="py-2.5 px-4 text-center">
+                                ${getStatusBadge(pc.proforma || 'Não iniciada')}
+                            </td>
+                            <td class="py-2.5 px-4">
+                                ${getStatusBadge(pc.status)}
+                            </td>
+                            <td class="py-2.5 px-4 text-slate-200 pl-8">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="file-code-2" class="w-3.5 h-3.5 text-slate-500"></i>
+                                    <span class="font-medium">${pc.name}</span>
+                                    ${pc.notes ? `<span class="text-slate-500 text-[11px] ml-2 italic">- ${pc.notes}</span>` : ''}
+                                </div>
+                            </td>
+                            <td class="py-2.5 px-4 text-slate-500">-</td>
+                            <td class="py-2.5 px-4 text-slate-400">${pc.delivery_date ? formatDate(pc.delivery_date) : '-'}</td>
+                            <td class="py-2.5 px-4 text-slate-500">-</td>
+                            <td class="py-2.5 px-4 text-right space-x-1">
+                                <button onclick="openPCModal('${p.id}', '${pc.id}')" class="p-1 text-slate-400 hover:text-indigo-400 rounded hover:bg-slate-800">
+                                    <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <button onclick="deletePC('${p.id}', '${pc.id}')" class="p-1 text-slate-400 hover:text-rose-400 rounded hover:bg-slate-800">
+                                    <i data-lucide="trash" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </td>
+                        `;
+                        tbody.appendChild(trPc);
+                    });
+                }
             });
 
             lucide.createIcons();
@@ -858,17 +1106,22 @@
             if (chartStatusInstance) chartStatusInstance.destroy();
             if (chartProgressInstance) chartProgressInstance.destroy();
 
-            // Status Distribution Count
-            const statusCounts = { 'Não iniciada': 0, 'Em andamento': 0, 'Em verificação': 0, 'Concluída': 0 };
-            projects.forEach(p => statusCounts[p.status] = (statusCounts[p.status] || 0) + 1);
+            const pcStatusCounts = {};
+            projects.forEach(p => {
+                if (p.pcs) {
+                    p.pcs.forEach(pc => {
+                        pcStatusCounts[pc.status] = (pcStatusCounts[pc.status] || 0) + 1;
+                    });
+                }
+            });
 
             chartStatusInstance = new Chart(ctxStatus, {
                 type: 'doughnut',
                 data: {
-                    labels: Object.keys(statusCounts),
+                    labels: Object.keys(pcStatusCounts),
                     datasets: [{
-                        data: Object.values(statusCounts),
-                        backgroundColor: ['#475569', '#6366f1', '#f59e0b', '#10b981'],
+                        data: Object.values(pcStatusCounts),
+                        backgroundColor: ['#475569', '#6366f1', '#f59e0b', '#10b981', '#3b82f6', '#ec4899'],
                         borderWidth: 0
                     }]
                 },
@@ -884,8 +1137,8 @@
                 data: {
                     labels: projects.map(p => p.code),
                     datasets: [{
-                        label: 'Progresso (%)',
-                        data: projects.map(p => p.progress),
+                        label: 'Conclusão de PCs (%)',
+                        data: projects.map(p => calculateProjectProgress(p)),
                         backgroundColor: '#6366f1',
                         borderRadius: 8
                     }]
@@ -915,9 +1168,6 @@
                     document.getElementById('project-id').value = project.id;
                     document.getElementById('project-code').value = project.code;
                     document.getElementById('project-status').value = project.status;
-                    document.getElementById('project-priority').value = project.priority;
-                    document.getElementById('project-progress').value = project.progress;
-                    document.getElementById('project-delivery').value = project.delivery_date || '';
                     document.getElementById('project-balance').value = project.balance || '';
                 }
             } else {
@@ -933,8 +1183,6 @@
         }
 
         function openConfigModal() {
-            document.getElementById('cfg-supabase-url').value = localStorage.getItem('gestor_supabase_url') || '';
-            document.getElementById('cfg-supabase-key').value = localStorage.getItem('gestor_supabase_key') || '';
             document.getElementById('modal-config').classList.remove('hidden');
         }
 
@@ -951,11 +1199,6 @@
                 localStorage.setItem('gestor_supabase_key', key);
                 initSupabase();
                 showToast('Configurações salvas!', 'success');
-            } else {
-                localStorage.removeItem('gestor_supabase_url');
-                localStorage.removeItem('gestor_supabase_key');
-                supabaseClient = null;
-                showToast('Supabase desconectado', 'info');
             }
             closeConfigModal();
         }
