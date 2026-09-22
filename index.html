@@ -204,15 +204,6 @@
                         </button>
                     </form>
                 </div>
-
-                <!-- Guest Demo Login Option -->
-                <div class="mt-8 pt-6 border-t border-slate-800/80 text-center">
-                    <p class="text-xs text-slate-500 mb-3">Deseja apenas testar a plataforma?</p>
-                    <button type="button" onclick="loginAsGuest()" class="w-full py-2.5 border border-slate-700 hover:bg-slate-800/60 text-slate-300 font-medium rounded-xl text-sm transition-all flex items-center justify-center space-x-2">
-                        <i data-lucide="user-check" class="w-4 h-4 text-slate-400"></i>
-                        <span>Entrar como Convidado (Modo Demo)</span>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -639,11 +630,6 @@
             }
         }
 
-        function loginAsGuest() {
-            showToast('Bem-vindo ao Modo Convidado!', 'info');
-            loginUserSession({ id: 'guest-id', email: 'convidado@demo.com', name: 'Convidado Demo', isGuest: true });
-        }
-
         function loginUserSession(user) {
             currentUser = user;
             localStorage.setItem('gestor_active_user', JSON.stringify(user));
@@ -651,7 +637,7 @@
             document.getElementById('user-display-name').innerText = user.name;
             document.getElementById('user-display-email').innerText = user.email;
             document.getElementById('user-avatar').innerText = user.name.charAt(0).toUpperCase();
-            document.getElementById('workspace-type-badge').innerText = user.isGuest ? 'Workspace Convidado' : 'Workspace Privado';
+            document.getElementById('workspace-type-badge').innerText = 'Workspace Privado';
 
             document.getElementById('auth-screen').classList.add('hidden');
             document.getElementById('dashboard-screen').classList.remove('hidden');
@@ -678,7 +664,7 @@
 
         // --- DATA CRUD & PC LOGIC ---
         async function loadProjects() {
-            if (supabaseClient && currentUser && !currentUser.isGuest) {
+            if (supabaseClient && currentUser) {
                 const { data, error } = await supabaseClient
                     .from('projects')
                     .select('*')
@@ -777,7 +763,7 @@
         }
 
         async function saveProjectsState() {
-            if (supabaseClient && currentUser && !currentUser.isGuest) {
+            if (supabaseClient && currentUser) {
                 for (let p of projects) {
                     const payload = {
                         user_id: currentUser.id,
@@ -839,7 +825,7 @@
         async function deleteProject(id) {
             if (!confirm('Deseja realmente excluir este projeto e todas as suas PCs?')) return;
 
-            if (supabaseClient && currentUser && !currentUser.isGuest && id.length > 20) {
+            if (supabaseClient && currentUser && id.length > 20) {
                 await supabaseClient.from('projects').delete().eq('id', id);
             }
             projects = projects.filter(p => p.id !== id);
